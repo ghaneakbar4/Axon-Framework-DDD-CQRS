@@ -1,0 +1,8 @@
+/target/
+*.mv.db
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr

@@ -1,0 +1,89 @@
+@startuml
+
+skinparam component {
+    backgroundColor<<Aggregate>> lightBlue
+    backgroundColor<<Event handler>> lightGreen
+}
+
+skinparam noteFontSize 10
+
+component "Person" <<Aggregate>> as P
+database "Person\nschema" as PDB
+
+component "Address" <<Aggregate>> as A
+database "Address\nschema" as ADB
+
+queue "Event Bus" as E
+
+queue "Command Bus" as C
+
+queue "Query Bus" as Q
+
+interface "Command\nAPI" as CAPI
+interface "Query\nAPI" as QAPI
+
+component "Saga" <<Event handler>> as S
+database "Saga\nschema" as SDB
+
+component "Projection" <<Event handler>> as PR
+database "Projection\nschema" as PRDB
+
+
+CAPI -right-> C: "use"
+
+C --down--> P: "dispatch"
+
+C --down--> A: "dispatch"
+
+P -left- PDB: "JPA"
+
+A -right- ADB: "JPA"
+
+P -right-> E: "apply"
+
+E <.left. P: "listen"
+
+A -left-> E: "apply"
+
+A .left.> E: "listen"
+
+S .down.> E: "listen"
+
+S -up-> C: "dispatch"
+
+S -right- SDB: "JPA"
+
+PR .up.> E: "listen"
+
+PR -right- PRDB: "JPA"
+
+Q --up--> A: "query"
+
+Q --up--> P: "query"
+
+Q <-up-> PR: "query"
+
+QAPI -right-> Q: "use"
+
+note left of PR
+1..*
+denormalized
+endnote
+
+note left of S
+1..*
+workflow
+endnote
+
+note right of C
+Axon server
+infrastructure
+endnote
+
+note right of Q
+Axon server
+infrastructure
+endnote
+
+
+@enduml
