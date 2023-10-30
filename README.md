@@ -59,4 +59,5 @@ This is how assigning private address to a person Saga proceeds:
 - JDBC URL: jdbc:h2:tcp://localhost:9090/./axondb;IFEXISTS=true;DB_CLOSE_ON_EXIT=FALSE
 -you can  change database to sql server or oracle
 ### Education
--i try to recored video from source code and discribe it
+- I try to recored video from source code and discribe it
+- We using Axonserver and Rabbitmq for event sourcing
