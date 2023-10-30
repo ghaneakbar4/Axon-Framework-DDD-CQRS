@@ -57,4 +57,6 @@ This is how assigning private address to a person Saga proceeds:
 - Access H2 console at http://localhost:8079/h2-console
 - Use Server configuration
 - JDBC URL: jdbc:h2:tcp://localhost:9090/./axondb;IFEXISTS=true;DB_CLOSE_ON_EXIT=FALSE
--Can you change database to sql server or oracle
+-you can  change database to sql server or oracle
+### Education
+-i try to recored video from source code and discribe it
