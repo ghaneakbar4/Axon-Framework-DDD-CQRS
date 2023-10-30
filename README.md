@@ -4,9 +4,7 @@ Axon Multi-services
 :construction: **Attention: under construction** :construction:
 
 :warning: Note, in `AssignPrivateAddressSaga.java` there is a use of `QueryGateway` for validation
-of the address assigment. This goes against CQRS principles stating that a Saga must not access
-the read-model (or projections). See [this question and answer](https://stackoverflow.com/questions/34284697/why-cant-sagas-query-the-read-side)
-for more details.
+of the address assigment. 
 
 
 ### Introduction
